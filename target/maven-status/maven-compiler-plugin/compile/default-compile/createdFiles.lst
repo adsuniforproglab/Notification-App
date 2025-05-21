@@ -1,0 +1,9 @@
+com/leonardo/notificationapp/config/AmazonSnsConfiguration.class
+com/leonardo/notificationapp/constants/Messages.class
+com/leonardo/notificationapp/service/SnsNotificationService.class
+com/leonardo/notificationapp/listener/CompletedProposalListener.class
+com/leonardo/notificationapp/domain/Proposal.class
+com/leonardo/notificationapp/config/RabbitConfiguration.class
+com/leonardo/notificationapp/NotificationAppApplication.class
+com/leonardo/notificationapp/listener/PendingProposalListener.class
+com/leonardo/notificationapp/domain/User.class
