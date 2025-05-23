@@ -1,93 +1,83 @@
-# Notification App
+# Aplicativo de Notificação
 
-A Spring Boot microservice for sending SMS notifications via Amazon SNS based on RabbitMQ message queue events.
+Um microsserviço Spring Boot para envio de notificações SMS via Amazon SNS baseado em eventos de fila de mensagens RabbitMQ.
 
-## Overview
+## Visão Geral
 
-The Notification App is a Java Spring Boot application that consumes proposal-related events from RabbitMQ queues and sends SMS notifications to users via AWS SNS. It is designed to handle two primary notification types:
-- Pending proposal notifications
-- Completed proposal notifications
+O Aplicativo de Notificação é uma aplicação Java Spring Boot que consome eventos relacionados a propostas de filas RabbitMQ e envia notificações SMS para usuários via AWS SNS. Ele é projetado para lidar com dois tipos principais de notificação:
+- Notificações de propostas pendentes
+- Notificações de propostas concluídas
 
-## Features
+## Funcionalidades
 
-- Message consumption from RabbitMQ queues
-- SMS notification delivery via Amazon SNS
-- Error handling and fallback mechanisms
-- Customizable notification messages
-- Comprehensive logging
-- Containerized deployment
-- Health monitoring via Spring Actuator
+- Consumo de mensagens de filas RabbitMQ
+- Entrega de notificações SMS via Amazon SNS
+- Tratamento de erros e mecanismos de fallback
+- Mensagens de notificação personalizáveis
+- Log abrangente
+- Implantação containerizada
+- Monitoramento de saúde via Spring Actuator
 
-## Technology Stack
+## Pilha de Tecnologia
 
 - Java 21
 - Spring Boot 3.4.5
 - Spring AMQP (RabbitMQ)
-- AWS SDK for SNS
+- AWS SDK para SNS
 - Docker & Docker Compose
 - Lombok
-- JUnit 5 & Mockito for testing
+- JUnit 5 & Mockito para testes
 
-## Prerequisites
+## Pré-requisitos
 
-- Java 21 or higher
+- Java 21 ou superior
 - Maven
-- RabbitMQ server (or Docker)
-- AWS account with SNS permissions
-- Docker & Docker Compose (for containerized deployment)
+- Servidor RabbitMQ (ou Docker)
+- Conta AWS com permissões SNS
+- Docker & Docker Compose (para implantação containerizada)
 
-## Configuration
+## Configuração
 
-The application can be configured using environment variables or a `.env` file. Key configuration parameters include:
+A aplicação pode ser configurada usando variáveis de ambiente ou um arquivo `.env`. Os principais parâmetros de configuração incluem:
 
-### RabbitMQ Configuration
+### Configuração RabbitMQ
 ```properties
 RABBITMQ_HOST=localhost
 RABBITMQ_PORT=5672
 RABBITMQ_USERNAME=guest
 RABBITMQ_PASSWORD=guest
-```
+Configuração AWS
+Properties
 
-### AWS Configuration
-```properties
-AWS_ACCESS_KEY=your_aws_access_key
-AWS_SECRET_KEY=your_aws_secret_key
+AWS_ACCESS_KEY=sua_aws_access_key
+AWS_SECRET_KEY=sua_aws_secret_key
 AWS_REGION=us-east-1
-```
+Configuração de Notificação
+Properties
 
-### Notification Configuration
-```properties
-DEFAULT_PHONE=your_default_fallback_phone_number
-```
+DEFAULT_PHONE=seu_numero_de_telefone_de_fallback_padrao
+Começando
+Executando Localmente
+Clone o repositório
+Crie um arquivo .env com sua configuração (veja o template na seção Configuração)
+Execute a aplicação usando Maven:
+Bash
 
-## Getting Started
-
-### Running Locally
-
-1. Clone the repository
-2. Create a `.env` file with your configuration (see template in Configuration section)
-3. Run the application using Maven:
-```bash
 ./mvnw spring-boot:run
-```
+Usando Docker
+Construa a imagem Docker:
+Bash
 
-### Using Docker
-
-1. Build the Docker image:
-```bash
 docker build -t notification-app .
-```
+Execute usando Docker Compose:
+Bash
 
-2. Run using Docker Compose:
-```bash
 docker-compose up -d
-```
+Formatos de Mensagem
+A aplicação espera mensagens de proposta com a seguinte estrutura:
 
-## Message Formats
+JSON
 
-The application expects proposal messages with the following structure:
-
-```json
 {
   "id": 123,
   "proposalValue": 5000.0,
@@ -101,38 +91,26 @@ The application expects proposal messages with the following structure:
     "tellPhone": "+1234567890"
   }
 }
-```
+Testes
+Execute os testes usando Maven:
 
-## Testing
+Bash
 
-Run the tests using Maven:
-
-```bash
 ./mvnw test
-```
+Ou use a tarefa de teste do VS Code:
 
-Or use the VS Code test task:
+Bash
 
-```bash
-# Run all tests
+# Executar todos os testes
 mvn -B test
-```
+Verificações de Saúde
+A aplicação expõe endpoints de saúde através do Spring Actuator:
 
-## Health Checks
+Saúde: /actuator/health
+Informações: /actuator/info
+Métricas: /actuator/metrics
+Monitoramento
+O Spring Actuator fornece métricas detalhadas para monitoramento. A configuração do Docker inclui verificações de saúde para garantir que a aplicação esteja funcionando corretamente.
 
-The application exposes health endpoints through Spring Actuator:
-
-- Health: `/actuator/health`
-- Information: `/actuator/info`
-- Metrics: `/actuator/metrics`
-
-## Monitoring
-
-Spring Actuator provides detailed metrics for monitoring. The Docker setup includes health checks to ensure the application is running correctly.
-
-
-## Contributors
-
-- Leonardo Meireles
-
----
+Contribuidor
+Leonardo Meireles
