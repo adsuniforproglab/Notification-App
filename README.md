@@ -130,8 +130,4 @@ A aplicação expõe endpoints de saúde através do Spring Actuator:
 
 O Spring Actuator fornece métricas detalhadas para monitoramento. A configuração Docker inclui verificações de saúde para garantir que a aplicação esteja executando corretamente.
 
-## Contribuidores
-
-- Leonardo Meireles
-
 ---
