@@ -26,20 +26,20 @@ public class PendingProposalListener {
 
             User user = proposal.getUser();
             if (user == null) {
-                log.error("User information missing in proposal: {}", proposal.getId());
+                log.info("User information missing in proposal: {}", proposal.getId());
                 throw new NotificationException("User information missing in proposal");
             }
 
-            String message = String.format(Messages.PENDING_PROPOSAL, user.getName());
-            log.debug("Preparing notification with message: {}", message);
+            String message = String.format(Messages.PENDING_PROPOSAL, user.getFullName());
+            log.info("Preparing notification with message: {}", message);
 
             // Use user's phone number instead of hardcoded value
-            String phoneNumber = user.getTellPhone();
+            String phoneNumber = user.getPhoneNumber();
             snsNotificationService.sendNotification(message, phoneNumber);
 
             log.info("Pending proposal notification sent for proposal ID: {}", proposal.getId());
         } catch (Exception e) {
-            log.error("Error processing pending proposal: {}", e.getMessage(), e);
+            log.info("Error processing pending proposal: {}", e.getMessage(), e);
             // Don't rethrow - we don't want to lose the message or block the queue
         }
     }

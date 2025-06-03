@@ -39,7 +39,7 @@ class CompletedProposalListenerTest {
                 .id(1L)
                 .name("John")
                 .lastName("Doe")
-                .tellPhone("+5585989924491")
+                .phoneNumber("+5585989924491")
                 .build();
 
         proposal = Proposal.builder()
@@ -59,7 +59,7 @@ class CompletedProposalListenerTest {
         completedProposalListener.proposalDone(proposal);
 
         // Assert
-        verify(snsNotificationService).sendNotification(OBSERVATION, user.getTellPhone());
+        verify(snsNotificationService).sendNotification(OBSERVATION, user.getPhoneNumber());
     }
 
     @Test
@@ -73,7 +73,7 @@ class CompletedProposalListenerTest {
 
         // Assert
         String expectedMessage = String.format(Messages.PROPOSAL_DONE, user.getName());
-        verify(snsNotificationService).sendNotification(expectedMessage, user.getTellPhone());
+        verify(snsNotificationService).sendNotification(expectedMessage, user.getPhoneNumber());
     }
 
     @Test

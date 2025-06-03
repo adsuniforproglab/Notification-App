@@ -38,7 +38,7 @@ class PendingProposalListenerTest {
                 .id(1L)
                 .name("John")
                 .lastName("Doe")
-                .tellPhone("+5585989924491")
+                .phoneNumber("+5585989924491")
                 .build();
 
         proposal = Proposal.builder()
@@ -56,7 +56,7 @@ class PendingProposalListenerTest {
 
         // Assert
         String expectedMessage = String.format(Messages.PENDING_PROPOSAL, user.getName());
-        verify(snsNotificationService).sendNotification(expectedMessage, user.getTellPhone());
+        verify(snsNotificationService).sendNotification(expectedMessage, user.getPhoneNumber());
     }
 
     @Test

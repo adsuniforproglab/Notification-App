@@ -19,12 +19,12 @@ public class SnsNotificationService {
 
     private final AmazonSNS amazonSNS;
 
-    @Value("${notification.default.phone:}")
+    @Value("${notification.default-phone:5585989924491}")
     private String defaultPhone;
 
     /**
      * Send SMS notification to the specified phone number
-     * 
+     *
      * @param message The message content to send
      * @param phoneNumber The recipient's phone number
      * @return The message ID if successfully sent

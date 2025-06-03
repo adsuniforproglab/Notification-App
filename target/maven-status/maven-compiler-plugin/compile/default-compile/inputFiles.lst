@@ -1,9 +1,0 @@
-/home/leonardo/Documents/MicroServices/notification-app/src/main/java/com/leonardo/notificationapp/NotificationAppApplication.java
-/home/leonardo/Documents/MicroServices/notification-app/src/main/java/com/leonardo/notificationapp/config/RabbitConfiguration.java
-/home/leonardo/Documents/MicroServices/notification-app/src/main/java/com/leonardo/notificationapp/listener/PendingProposalListener.java
-/home/leonardo/Documents/MicroServices/notification-app/src/main/java/com/leonardo/notificationapp/constants/Messages.java
-/home/leonardo/Documents/MicroServices/notification-app/src/main/java/com/leonardo/notificationapp/domain/User.java
-/home/leonardo/Documents/MicroServices/notification-app/src/main/java/com/leonardo/notificationapp/domain/Proposal.java
-/home/leonardo/Documents/MicroServices/notification-app/src/main/java/com/leonardo/notificationapp/config/AmazonSnsConfiguration.java
-/home/leonardo/Documents/MicroServices/notification-app/src/main/java/com/leonardo/notificationapp/service/SnsNotificationService.java
-/home/leonardo/Documents/MicroServices/notification-app/src/main/java/com/leonardo/notificationapp/listener/CompletedProposalListener.java

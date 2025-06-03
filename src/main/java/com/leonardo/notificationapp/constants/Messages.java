@@ -6,7 +6,8 @@ package com.leonardo.notificationapp.constants;
 public final class Messages {
     // User notification messages
     public static final String PENDING_PROPOSAL = "Prezado(a) %s, sua proposta está pendente de aprovação.";
-    public static final String PROPOSAL_DONE = "Prezado(a) %s, sua proposta está concluida.";
+    public static final String PROPOSAL_DONE =
+            "Prezado(a) %s, sua proposta está concluida. O valor da proposta é: R$ %.2f.";
 
     // Error messages
     public static final String ERROR_SENDING_NOTIFICATION = "Error sending notification: %s";

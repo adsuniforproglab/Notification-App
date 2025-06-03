@@ -4,7 +4,7 @@ Um microsserviço Spring Boot para envio de notificações SMS via Amazon SNS ba
 
 ## Visão Geral
 
-O Aplicativo de Notificação é uma aplicação Java Spring Boot que consome eventos relacionados a propostas de filas RabbitMQ e envia notificações SMS para usuários via AWS SNS. Ele é projetado para lidar com dois tipos principais de notificação:
+O Aplicativo de Notificação é uma aplicação Java Spring Boot que consome eventos relacionados a propostas de filas RabbitMQ e envia notificações SMS para usuários via AWS SNS. Foi projetado para lidar com dois tipos principais de notificação:
 - Notificações de propostas pendentes
 - Notificações de propostas concluídas
 
@@ -15,10 +15,10 @@ O Aplicativo de Notificação é uma aplicação Java Spring Boot que consome ev
 - Tratamento de erros e mecanismos de fallback
 - Mensagens de notificação personalizáveis
 - Log abrangente
-- Implantação containerizada
+- Deploy containerizado
 - Monitoramento de saúde via Spring Actuator
 
-## Pilha de Tecnologia
+## Stack Tecnológica
 
 - Java 21
 - Spring Boot 3.4.5
@@ -34,7 +34,7 @@ O Aplicativo de Notificação é uma aplicação Java Spring Boot que consome ev
 - Maven
 - Servidor RabbitMQ (ou Docker)
 - Conta AWS com permissões SNS
-- Docker & Docker Compose (para implantação containerizada)
+- Docker & Docker Compose (para deploy containerizado)
 
 ## Configuração
 
@@ -46,71 +46,92 @@ RABBITMQ_HOST=localhost
 RABBITMQ_PORT=5672
 RABBITMQ_USERNAME=guest
 RABBITMQ_PASSWORD=guest
-Configuração AWS
-Properties
+```
 
-AWS_ACCESS_KEY=sua_aws_access_key
-AWS_SECRET_KEY=sua_aws_secret_key
+### Configuração AWS
+```properties
+AWS_ACCESS_KEY=sua_chave_de_acesso_aws
+AWS_SECRET_KEY=sua_chave_secreta_aws
 AWS_REGION=us-east-1
-Configuração de Notificação
-Properties
+```
 
-DEFAULT_PHONE=seu_numero_de_telefone_de_fallback_padrao
-Começando
-Executando Localmente
-Clone o repositório
-Crie um arquivo .env com sua configuração (veja o template na seção Configuração)
-Execute a aplicação usando Maven:
-Bash
+### Configuração de Notificação
+```properties
+DEFAULT_PHONE=seu_numero_telefone_padrao_fallback
+```
 
+## Começando
+
+### Executando Localmente
+
+1. Clone o repositório
+2. Crie um arquivo `.env` com sua configuração (veja o modelo na seção Configuração)
+3. Execute a aplicação usando Maven:
+```bash
 ./mvnw spring-boot:run
-Usando Docker
-Construa a imagem Docker:
-Bash
+```
 
+### Usando Docker
+
+1. Construa a imagem Docker:
+```bash
 docker build -t notification-app .
-Execute usando Docker Compose:
-Bash
+```
 
+2. Execute usando Docker Compose:
+```bash
 docker-compose up -d
-Formatos de Mensagem
+```
+
+## Formatos de Mensagem
+
 A aplicação espera mensagens de proposta com a seguinte estrutura:
 
-JSON
-
+```json
 {
   "id": 123,
   "proposalValue": 5000.0,
   "approved": true,
   "integrated": true,
-  "observation": "Optional custom message",
+  "observation": "Mensagem personalizada opcional",
   "user": {
     "id": 456,
-    "name": "John",
-    "lastName": "Doe",
-    "tellPhone": "+1234567890"
+    "name": "João",
+    "lastName": "Silva",
+    "tellPhone": "+5511987654321"
   }
 }
-Testes
+```
+
+## Testes
+
 Execute os testes usando Maven:
 
-Bash
-
+```bash
 ./mvnw test
+```
+
 Ou use a tarefa de teste do VS Code:
 
-Bash
-
+```bash
 # Executar todos os testes
 mvn -B test
-Verificações de Saúde
+```
+
+## Verificações de Saúde
+
 A aplicação expõe endpoints de saúde através do Spring Actuator:
 
-Saúde: /actuator/health
-Informações: /actuator/info
-Métricas: /actuator/metrics
-Monitoramento
-O Spring Actuator fornece métricas detalhadas para monitoramento. A configuração do Docker inclui verificações de saúde para garantir que a aplicação esteja funcionando corretamente.
+- Saúde: `/actuator/health`
+- Informações: `/actuator/info`
+- Métricas: `/actuator/metrics`
 
-Contribuidor
-Leonardo Meireles
+## Monitoramento
+
+O Spring Actuator fornece métricas detalhadas para monitoramento. A configuração Docker inclui verificações de saúde para garantir que a aplicação esteja executando corretamente.
+
+## Contribuidores
+
+- Leonardo Meireles
+
+---

@@ -34,14 +34,13 @@ public class CompletedProposalListener {
             if (proposal.getObservation() != null && !proposal.getObservation().isEmpty()) {
                 message = proposal.getObservation();
             } else {
-                // Use default message format if no observation provided
-                message = String.format(Messages.PROPOSAL_DONE, user.getName());
+                message = String.format(Messages.PROPOSAL_DONE, user.getFullName(), proposal.getProposalValue());
             }
 
             log.debug("Preparing completed proposal notification with message: {}", message);
 
             // Use user's phone number instead of hardcoded value
-            String phoneNumber = user.getTellPhone();
+            String phoneNumber = user.getPhoneNumber();
             snsNotificationService.sendNotification(message, phoneNumber);
 
             log.info("Completed proposal notification sent for proposal ID: {}", proposal.getId());
